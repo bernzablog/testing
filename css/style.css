@@ -133,4 +133,115 @@ footer {
         margin-top: 0;
         border-radius: 0;
     }
+}/* INTRO SECTION with photo on the right */
+.intro-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    flex: 1;
+    min-width: 250px;
+}
+
+.profile-photo {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* FADE-IN ANIMATION on page load */
+main {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger paragraph fade-ins slightly */
+p {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* NAV LINK hover animation */
+.nav-links li a {
+    position: relative;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #ffd3b6;
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* MOBILE: stack photo above/below text again on small screens */
+@media (max-width: 600px) {
+    .intro-section {
+        flex-direction: column;
+    }
+
+    .profile-photo {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+}
+/* TYPEWRITER EFFECT for h1 */
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #4a90d9;
+    width: 0;
+    animation: 
+        typing 2.5s steps(22, end) forwards,
+        blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 22ch; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #4a90d9; }
+}
+.typewriter {
+    animation: 
+        typing 2.5s steps(22, end) forwards,
+        blink-caret 0.75s step-end infinite;
+    animation-delay: 0s, 2.5s; /* caret blinks only after typing finishes */
 }
